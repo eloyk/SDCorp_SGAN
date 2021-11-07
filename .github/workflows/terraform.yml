@@ -23,7 +23,7 @@ jobs:
 
       - name: 'Terraform Comands'
         run: |
-          cd terraform-oci-oke
+          cd infra/terraform
           echo "${{secrets.OCI_KEY_FILE}}" >> oci_api_key.pem
           echo "${{secrets.OCI_PUBLIC_KEY_FILE}}" >> PuttySSH_public.pub
           terraform init
