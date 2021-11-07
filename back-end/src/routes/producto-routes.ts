@@ -11,7 +11,7 @@ import { validarSolicitud } from "../middlewares/validar-solicitud";
 const router = express.Router();
 
 router.post(
-    '/api/producto/registrar',
+    '/producto/registrar',
     requireAuth,
     [
       body('descripcion')
@@ -29,25 +29,25 @@ router.post(
 )
 
 router.post(
-    '/api/producto/unidadmedida',
+    '/producto/unidadmedida',
     requireAuth,
     crearProductoUnidadMedida
 )
 
 router.put(
-    '/api/producto/:id',
+    '/producto/:id',
     requireAuth,
     actualizarProducto
 )
 
 router.get(
-    '/api/producto',
+    '/producto',
     requireAuth,
     indexProduto
 )
 
 router.get(
-    '/api/producto/:id',
+    '/producto/:id',
     requireAuth,
     verProducto
 )

@@ -11,7 +11,7 @@ import { validarSolicitud } from "../middlewares/validar-solicitud";
 const router = express.Router();
 
 router.post(
-  '/api/establecimiento/registrar',
+  '/establecimiento/registrar',
   requireAuth,
   [
     body('descripcion')
@@ -34,19 +34,19 @@ router.post(
 );
 
 router.put(
-  '/api/establecimiento/:id',
+  '/establecimiento/:id',
   requireAuth,
   actualizarEstablecimiento
 );
 
 router.get(
-  '/api/establecimiento', 
+  '/establecimiento', 
   requireAuth, 
   indexEstablecimiento
 );
 
 router.get(
-  '/api/establecimiento/:id',
+  '/establecimiento/:id',
   requireAuth,
   verEstablecimiento
 )

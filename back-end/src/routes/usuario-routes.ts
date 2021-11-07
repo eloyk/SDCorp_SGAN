@@ -13,7 +13,7 @@ import { usuarioActual } from '../middlewares/usuario-actual';
 const router = express.Router();
 
 router.post(
-  '/api/usuario/registrousuario',
+  '/usuario/registrousuario',
   [
     body('email').isEmail().withMessage('El Email no es valido'),
     body('password')
@@ -28,7 +28,7 @@ router.post(
 );
 
 router.post(
-  '/api/usuario/iniciarsesion',
+  '/usuario/iniciarsesion',
   [
     body('email').isEmail().withMessage('El Email no es valido'),
     body('password')
@@ -41,25 +41,25 @@ router.post(
 );
 
 router.put(
-  '/api/usuario/:id', 
+  '/usuario/:id', 
   validarSolicitud, 
   actualizarUsuario
 );
 
 router.get(
-  '/api/usuario', 
+  '/usuario', 
   requireAuth, 
   indexUsuario
 );
 
 router.get(
-  '/api/usuario/usuarioactual', 
+  '/usuario/usuarioactual', 
   usuarioActual, 
   usuarioActualMethod
 );
 
 router.post(
-  '/api/usuario/cerrarsesion', 
+  '/usuario/cerrarsesion', 
   cerrarsesion
 );
 

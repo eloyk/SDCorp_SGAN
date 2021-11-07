@@ -10,7 +10,7 @@ import { validarSolicitud } from "../middlewares/validar-solicitud";
 const router = express.Router();
 
 router.post(
-  '/api/compra/precompra',
+  '/compra/precompra',
   requireAuth,
   [
     body('proveedorId')
@@ -39,7 +39,7 @@ router.post(
 )
 
 router.post(
-  '/api/compra',
+  '/compra',
   requireAuth,
   [
     body('compraId')
@@ -52,13 +52,13 @@ router.post(
 )
 
 router.get(
-  '/api/compra', 
+  '/compra', 
   requireAuth,
   indexCompra
 )
 
 router.get(
-  '/api/compra/:id',
+  '/compra/:id',
   requireAuth,
   verCompra
 )

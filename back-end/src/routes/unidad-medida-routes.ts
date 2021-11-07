@@ -11,7 +11,7 @@ import { validarSolicitud } from "../middlewares/validar-solicitud";
 const router = express.Router();
 
 router.post(
-  '/api/unidad-medida/registrar',
+  '/unidad-medida/registrar',
   requireAuth,
   [
     body('descripcion')
@@ -31,19 +31,19 @@ router.post(
 );
 
 router.put(
-  '/api/unidad-medida/:id',
+  '/unidad-medida/:id',
   requireAuth,
   actualizarUnidadMedida
 );
 
 router.get(
-  '/api/unidad-medida', 
+  '/unidad-medida', 
   requireAuth, 
   indexUnidadMedida
 );
 
 router.get(
-  '/api/unidad-medida/:id',
+  '/unidad-medida/:id',
   requireAuth,
   verUnidadMedida
 )

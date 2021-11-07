@@ -11,7 +11,7 @@ import { validarSolicitud } from "../middlewares/validar-solicitud";
 const router = express.Router();
 
 router.post(
-  '/api/color/registrar',
+  '/color/registrar',
   requireAuth,
   [
     body('descripcion')
@@ -28,19 +28,19 @@ router.post(
 );
 
 router.put(
-  '/api/color/:id',
+  '/color/:id',
   requireAuth,
   actualizarColor
 );
 
 router.get(
-  '/api/color', 
+  '/color', 
   requireAuth, 
   indexColor
 );
 
 router.get(
-  '/api/color/:id',
+  '/color/:id',
   requireAuth,
   verColor
 )

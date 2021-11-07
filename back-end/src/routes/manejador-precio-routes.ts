@@ -10,7 +10,7 @@ import { validarSolicitud } from "../middlewares/validar-solicitud";
 const router = express.Router();
 
 router.post(
-    '/api/producto/manejadorprecio/registrar',
+    '/producto/manejadorprecio/registrar',
     requireAuth,
     [
       body('descripcion')
@@ -29,19 +29,19 @@ router.post(
 )
 
 router.put(
-    '/api/producto/manejadorprecio/:id',
+    '/producto/manejadorprecio/:id',
     requireAuth,
     actualizarManejadorPrecio
 )
 
 router.get(
-    '/api/producto/manejadorprecio/all',
+    '/producto/manejadorprecio/all',
     requireAuth,
     indexManejadorPrecio
 )
 
 router.get(
-    '/api/producto/manejadorprecio/:id',
+    '/producto/manejadorprecio/:id',
     requireAuth,
     verManejadorPrecio
 )

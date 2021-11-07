@@ -10,7 +10,7 @@ import { validarSolicitud } from "../middlewares/validar-solicitud";
 const router = express.Router();
 
 router.post(
-    '/api/producto/imagen/registrar',
+    '/producto/imagen/registrar',
     requireAuth,
     [
       body('descripcion')
@@ -30,19 +30,19 @@ router.post(
 )
 
 router.put(
-    '/api/producto/imagen/:id',
+    '/producto/imagen/:id',
     requireAuth,
     actualizarImagen
 )
 
 router.get(
-    '/api/producto/imagen/all',
+    '/producto/imagen/all',
     requireAuth,
     indexImagen
 )
 
 router.get(
-    '/api/producto/imagen/:id',
+    '/producto/imagen/:id',
     requireAuth,
     verImagen
 )
