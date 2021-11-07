@@ -1,0 +1,31 @@
+name: terraform
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'terraform/**'
+      
+  workflow_dispatch:
+      
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - name: 'Terraform Comands'
+        run: |
+          cd terraform-oci-oke
+          echo "${{secrets.OCI_KEY_FILE}}" >> oci_api_key.pem
+          echo "${{secrets.OCI_PUBLIC_KEY_FILE}}" >> PuttySSH_public.pub
+          terraform init
+          terraform validate
+          terraform apply -auto-approve
