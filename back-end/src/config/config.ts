@@ -1,7 +1,6 @@
 export default {
-    jwtSecret: process.env.JWT_KEY || 'somesecrettoken',
+    jwtSecret: process.env.JWT_KEY,
     DB: {
-      URI: process.env.MONGO_URI || 'mongodb://localhost/backend'
+      URI: process.env.MONGO_URI
     }
   };
-  
