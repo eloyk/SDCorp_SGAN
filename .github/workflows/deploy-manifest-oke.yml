@@ -1,0 +1,42 @@
+name: deploy-manifest-oke
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'infra/k8s/**'
+    
+  workflow_dispatch:  
+    
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Install oci-cli
+        uses: bytesbay/oci-cli-action@v1.0.2
+        with:
+          user: "${{ secrets.OCI_USER_OCID }}"
+          fingerprint: "${{ secrets.OCI_FINGERPRINT }}"
+          tenancy: "${{ secrets.OCI_TENANCY_OCID }}"
+          region: "${{ secrets.OCI_REGION }}"
+          api_key: |
+            ${{ secrets.OCI_KEY_FILE }}
+          verbose: true   
+      
+      - name: 'Download the KUBECONFIG'
+        run: |
+          mkdir -p ~/.kube
+          oci ce cluster create-kubeconfig --cluster-id ${{ secrets.CLUSTER_ACCESS }} --file ~/.kube/config --region ${{secrets.OCI_REGION}} --token-version 2.0.0 
+          export KUBECONFIG=~/.kube/config
+          
+      - name: 'Deploy the API on OKE'
+        run: |          
+          kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.5.4/cert-manager.yaml
+          kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.4/deploy/static/provider/cloud/deploy.yaml
+          kubectl apply -f infra/k8s/ingress
+          kubectl apply -f infra/k8s/issuer
+          kubectl apply -f infra/k8s/apps
