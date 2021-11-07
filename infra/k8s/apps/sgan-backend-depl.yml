@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sgan-backend-depl
+spec:
+  selector:
+    matchLabels:
+      app: sgan-backend
+  template:
+    metadata:
+      labels:
+        app: sgan-backend
+    spec:
+      containers:
+      - name: sgan-backend
+        image: eloyk/sgan_backend
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: MONGO_URI
+          value: "mongodb://mongo-svc:27017/sgan-backend"
+        - name: JWT_KEY
+          valueFrom:
+            secretKeyRef:
+              name: jwt-secret
+              key: JWT_KEY
+        resources: {}
+        ports:
+        - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sgan-backend-svc
+spec:
+  selector:
+    app: sgan-backend
+  ports:
+  - name: sgan-backend
+    protocol: TCP
+    port: 8080
+    targetPort: 3000
