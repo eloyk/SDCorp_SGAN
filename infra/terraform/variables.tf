@@ -49,4 +49,3 @@ variable "ClusterName" {
   default = "sdcorpOKECluster"
 }
 
-
