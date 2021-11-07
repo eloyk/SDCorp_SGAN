@@ -1,0 +1,48 @@
+name: backend-depl
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'back-end/**'
+      
+  workflow_dispatch:
+      
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: exec docker
+        run: |
+          cd back-end
+          docker build -t eloyk/backend .
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          docker push eloyk/backend
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: Install oci-cli
+        uses: bytesbay/oci-cli-action@v1.0.2
+        with:
+          user: "${{ secrets.OCI_USER_OCID }}"
+          fingerprint: "${{ secrets.OCI_FINGERPRINT }}"
+          tenancy: "${{ secrets.OCI_TENANCY_OCID }}"
+          region: "${{ secrets.OCI_REGION }}"
+          api_key: |
+            ${{ secrets.OCI_KEY_FILE }}
+          verbose: true
+      
+      - name: 'Download the KUBECONFIG'
+        run: |
+          mkdir -p ~/.kube
+          oci ce cluster create-kubeconfig --cluster-id ${{ secrets.CLUSTER_ACCESS }} --file ~/.kube/config --region ${{secrets.OCI_REGION}} --token-version 2.0.0 
+          export KUBECONFIG=~/.kube/config
+          
+      - name: 'Deploy the API on OKE'
+        run: |
+          kubectl rollout restart deployment sgan-backend-depl
