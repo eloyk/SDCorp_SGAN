@@ -41,8 +41,8 @@ variable "node_pool_size" {
 }
 
 variable "Shape" {
-  default = "VM.Standard.E4.Flex"
-  # default = "VM.Standard2.1"
+  # default = "VM.Standard.E4.Flex"
+  default = "VM.Standard2.1"
 }
 
 variable "ClusterName" {
