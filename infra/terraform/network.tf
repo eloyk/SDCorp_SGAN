@@ -2,7 +2,6 @@ resource "oci_core_vcn" "sdcorpVCN" {
   cidr_block     = var.VCN-CIDR
   compartment_id = oci_identity_compartment.sdcorpCompartment.id
   display_name   = "sdcorpVCN"
-  dns_label      = "sdcorp"
 }
 
 resource "oci_core_internet_gateway" "sdcorpInternetGateway" {
