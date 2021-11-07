@@ -234,7 +234,6 @@ resource "oci_core_subnet" "sdcorpClusterLB1Subnet" {
   display_name        = "sdcorpClusterLB1Subnet"
 
   dhcp_options_id = oci_core_vcn.sdcorpVCN.default_dhcp_options_id
-  dns_label       = "ClusterLB1Subnet"
   prohibit_internet_ingress  = "false"
   prohibit_public_ip_on_vnic = "false"
 
@@ -252,7 +251,6 @@ resource "oci_core_subnet" "sdcorpClusterLB2Subnet" {
   display_name        = "sdcorpClusterLB2Subnet"
 
   dhcp_options_id = oci_core_vcn.sdcorpVCN.default_dhcp_options_id
-  dns_label       = "ClusterLB2Subnet"
   prohibit_internet_ingress  = "false"
   prohibit_public_ip_on_vnic = "false"
 
@@ -270,7 +268,6 @@ resource "oci_core_subnet" "sdcorpNodePoolSubnet" {
   display_name        = "sdcorpNodePoolSubnet"
 
   dhcp_options_id = oci_core_vcn.sdcorpVCN.default_dhcp_options_id
-  dns_label       = "NodePoolSubnet"
   prohibit_internet_ingress  = "false"
   prohibit_public_ip_on_vnic = "false"
 
@@ -287,7 +284,6 @@ resource "oci_core_subnet" "sdcorpEndpointSubnet" {
   display_name        = "sdcorpEndpointSubnet"
 
   dhcp_options_id = oci_core_vcn.sdcorpVCN.default_dhcp_options_id
-  dns_label       = "EndpointSubnet"
   prohibit_internet_ingress  = "false"
   prohibit_public_ip_on_vnic = "false"
 
