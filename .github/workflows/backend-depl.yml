@@ -19,9 +19,9 @@ jobs:
       - name: exec docker
         run: |
           cd back-end
-          docker build -t eloyk/backend .
+          docker build -t eloyk/sgan_backend .
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-          docker push eloyk/backend
+          docker push eloyk/sgan_backend
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
