@@ -48,4 +48,3 @@ variable "Shape" {
 variable "ClusterName" {
   default = "sdcorpOKECluster"
 }
-
