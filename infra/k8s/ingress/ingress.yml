@@ -21,3 +21,13 @@ spec:
             name: sgan-backend-svc
             port:
               number: 8080
+  - host: wordpress.sgerd.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: wordpress-svc
+            port:
+              number: 8080
