@@ -14,10 +14,10 @@ spec:
       containers:
       - name: sgan-backend
         image: eloyk/sgan_backend
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         env:
         - name: MONGO_URI
-          value: "mongodb://mongo-svc:27017/sgan-backend"
+          value: "mongodb://mongo-svc:27017/backend"
         - name: JWT_KEY
           valueFrom:
             secretKeyRef:

@@ -1,6 +1,6 @@
 export default {
-    jwtSecret: process.env.JWT_KEY || 'somesecrettoken',
+    jwtSecret: process.env.JWT_KEY,
     DB: {
-      URI: process.env.MONGODB_URI || 'mongodb://localhost/bellaBellaBoutique'
+      URI: process.env.MONGODB_URI || 'mongodb://localhost/backend'
     }
   };
