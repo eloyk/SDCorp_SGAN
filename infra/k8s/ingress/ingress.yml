@@ -10,6 +10,7 @@ spec:
   - secretName: tls-secret-api
     hosts:
     - api.sgerd.com
+    - wordpress.sgerd.com
   rules:
   - host: api.sgerd.com
     http:
