@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: smd-beta
-        image: eloyk/smd-beta:v1
+        image: eloyk/smd-beta:v1.0.1
         imagePullPolicy: Always
         env:
         - name: DB_NAME
@@ -43,5 +43,5 @@ spec:
         - name: DT_PERCENT
           value: '6'
         - name: DT_AMOUNT
-          value: '100'
+          value: '15'
         resources: {}
