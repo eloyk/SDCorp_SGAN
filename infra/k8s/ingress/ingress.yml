@@ -15,6 +15,7 @@ spec:
     - api.sgerd.com
     - wordpress.sgerd.com
     - sgerd.com
+    - www.sgerd.com
   rules:
   - host: api.sgerd.com
     http:
@@ -37,6 +38,16 @@ spec:
             port:
               number: 8080
   - host: sgerd.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: sgan-frontend-svc
+            port:
+              number: 8080
+  - host: www.sgerd.com
     http:
       paths:
       - pathType: Prefix
