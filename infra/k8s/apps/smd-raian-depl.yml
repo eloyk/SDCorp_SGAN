@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: smd-beta-depl
+  name: smd--depl
 spec:
   selector:
     matchLabels:
-      app: smd-beta
+      app: smd-raian
   template:
     metadata:
       labels:
-        app: smd-beta
+        app: smd-raian
     spec:
       containers:
-      - name: smd-beta
+      - name: smd-raian
         image: eloyk/smd-beta:v1.0.5
         imagePullPolicy: Always
         env:
@@ -30,18 +30,18 @@ spec:
         - name: MIN_BUY
           value: '10'
         - name: INIT_BALANCE
-          value: '200'
+          value: '400'
 
         #BOTs
         - name: BOTS_DB
-          value: DB_BOTS
+          value: DB_BOTS_RAIAN
         # DAILY TRADE BOT
         - name: DT_CRYPTO
           value: DOT
         - name: DT_DOLLAR
           value: USDT
         - name: DT_PERCENT
-          value: '6'
+          value: '3'
         - name: DT_AMOUNT
-          value: '15'
+          value: '50'
         resources: {}
