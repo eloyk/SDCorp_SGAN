@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: smd--depl
+  name: smd-raian-depl
 spec:
   selector:
     matchLabels:
@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: smd-raian
-        image: eloyk/smd-beta:v1.0.5
+        image: eloyk/smd-beta:v1.0.6
         imagePullPolicy: Always
         env:
         - name: DB_NAME
@@ -44,4 +44,8 @@ spec:
           value: '3'
         - name: DT_AMOUNT
           value: '50'
+        - name: API_KEY
+          value: 'nOOXqrE8N2LdP37EDW0y4lzfNg6SqxNW8JjWXHyH9lkqHKKB1DiOq0CvX5pW0Sy9'
+        - name: SECRET_KEY
+          value: '6OTcgIlypNACle5u8TofA82E4AYFvlABqZJqvknaOEsf7sO445tZ5OySuuGCdaXg'
         resources: {}
