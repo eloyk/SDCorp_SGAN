@@ -16,6 +16,7 @@ spec:
     - wordpress.sgerd.com
     - sgerd.com
     - www.sgerd.com
+    - obs.sgerd.com
   rules:
   - host: api.sgerd.com
     http:
@@ -55,5 +56,15 @@ spec:
         backend:
           service:
             name: sgan-frontend-svc
+            port:
+              number: 8080
+  - host: obs.sgerd.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: obs-svc
             port:
               number: 8080
