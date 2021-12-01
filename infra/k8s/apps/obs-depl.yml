@@ -21,6 +21,15 @@ spec:
         resources: {}
         ports:
         - containerPort: 5901
+        volumeMounts:
+        - name: nfs-mount
+          mountPath: /obserc
+          subPath: docker-obs
+      volumes:
+      - name: nfs-mount
+        persistentVolumeClaim:
+          claimName: oke-fsspvc
+          readOnly: false
 
 ---
 apiVersion: v1

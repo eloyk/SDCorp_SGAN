@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: filebrowser-deployment
+  labels:
+    app: filebrowser-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: filebrowser-server
+  template:
+    metadata:
+      labels:
+        app: filebrowser-server
+    spec:
+      containers:
+      - name: filebrowser
+        image: hurlenko/filebrowser
+        env:
+        - name: FB_BASEURL
+          value: /filebrowser
+        ports:
+        - containerPort: 8080
+        resources: {}
+        volumeMounts:
+        - name: nfs-mount
+          mountPath: /data
+      volumes:
+      - name: nfs-mount
+        persistentVolumeClaim:
+          claimName: oke-fsspvc
+          readOnly: false
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: filebrowser-service
+  labels:
+    app: filebrowser-server
+spec:   
+  ports:
+  - name: filebrowser-server
+    port: 8080
+    targetPort: 8080
+  selector:
+   app: filebrowser-server

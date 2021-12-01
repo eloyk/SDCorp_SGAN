@@ -17,6 +17,7 @@ spec:
     - sgerd.com
     - www.sgerd.com
     - obs.sgerd.com
+    - filebrowser.sgerd.com
   rules:
   - host: api.sgerd.com
     http:
@@ -66,5 +67,15 @@ spec:
         backend:
           service:
             name: obs-svc
+            port:
+              number: 8080
+  - host: filebrowser.sgerd.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: filebrowser-service
             port:
               number: 8080
