@@ -34,8 +34,7 @@ router.post(
       .isLength({ min: 4, max: 60 })
       .withMessage(
         'El nombre del dueño de la tienda debe contener minimo de 4 caracteres y maxima de 60'
-      ),
-      body('tiendaId').not().isEmpty().withMessage('El id de la tienda es requerido'),
+      )
   ],
   validarSolicitud,
   registrarTienda
