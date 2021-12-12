@@ -10,12 +10,12 @@ export const registrarColor = async (req: Request, res: Response) => {
       tiendaId
     } = req.body;
 
-    const tienda = await Tienda.findOne({id: tiendaId});
+    const tienda = await Tienda.findById(tiendaId);
 
     const color = Color.build({ 
       descripcion,
       colorUrl: colorImagen,
-      tiendaId: tienda!.id,
+      tiendaId: tiendaId,
       usuarioIdAlta: req.usuarioActual!.id,
       emailUsuarioAlta: req.usuarioActual!.email 
     });

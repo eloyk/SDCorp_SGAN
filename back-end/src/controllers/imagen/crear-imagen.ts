@@ -27,7 +27,7 @@ export const crearImagen = async (req: Request, res: Response) => {
     throw new SolicitudIncorrecta('El color no existe');
   }
 
-  const tienda = await Tienda.findOne({ id: tiendaId });
+  const tienda = await Tienda.findById(tiendaId);
 
   const imagen = Imagen.build({
     descripcion,

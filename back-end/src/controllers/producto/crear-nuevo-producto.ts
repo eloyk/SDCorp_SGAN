@@ -5,7 +5,7 @@ import { Tienda } from '../../models/tienda';
 
 export const crearProducto = async (req: Request, res: Response) => {
   const { nombreProducto, descripcion, codigoBarra, tipoProducto, tiendaId } = req.body;
-  const tienda = await Tienda.findOne({ id: tiendaId });
+  const tienda = await Tienda.findById(tiendaId);
   
   if (!tienda) {
     throw new SolicitudIncorrecta(

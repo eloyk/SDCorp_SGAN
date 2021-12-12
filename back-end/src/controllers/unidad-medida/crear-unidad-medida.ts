@@ -10,7 +10,7 @@ export const registrarUnidadMedida = async (req: Request, res: Response) => {
       tiendaId
     } = req.body;
 
-    const tienda = await Tienda.findOne({id: tiendaId});
+    const tienda = await Tienda.findById(tiendaId);
 
     const unidadMedida = UnidadMedida.build({ 
       descripcion,
