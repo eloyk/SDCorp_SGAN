@@ -33,7 +33,8 @@ variable "kubernetes_version" {
   # default = "v1.14.8"
   # default = "v1.19.7"
   # default = "v1.20.8"
-  default = "v1.20.11"
+  # default = "v1.20.11"
+  default = "v1.21.5"
 }
 
 variable "node_pool_size" {
@@ -41,8 +42,8 @@ variable "node_pool_size" {
 }
 
 variable "Shape" {
-  # default = "VM.Standard.E4.Flex"
-  default = "VM.Standard2.1"
+  default = "VM.Standard.E4.Flex"
+  # default = "VM.Standard2.1"
 }
 
 variable "ClusterName" {

@@ -46,10 +46,10 @@ resource "oci_containerengine_node_pool" "sdcorpOKENodePool" {
     source_type = "IMAGE"
   }
 
-  # node_shape_config {
-  #   ocpus = 2
-  #   memory_in_gbs = 8
-  # }
+  node_shape_config {
+    ocpus = 2
+    memory_in_gbs = 8
+  }
 
   node_config_details {
     size      = var.node_pool_size

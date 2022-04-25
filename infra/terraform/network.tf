@@ -133,16 +133,6 @@ resource "oci_core_security_list" "sdcorpNodePoolSecurityList" {
       min = "22"
     }
   }
-  ingress_security_rules {
-    protocol    = "6"
-    source      = "0.0.0.0/0"
-    source_type = "CIDR_BLOCK"
-    stateless   = "false"
-    tcp_options {
-      max = "32000"
-      min = "32000"
-    }
-  }
   vcn_id = oci_core_vcn.sdcorpVCN.id
 }
 
